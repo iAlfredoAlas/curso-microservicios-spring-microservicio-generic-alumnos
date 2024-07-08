@@ -12,27 +12,29 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import javassist.expr.Instanceof;
+
 @Entity
 @Table(name = "alumnos")
 public class Alumno {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;	
-	
+	private Long id;
+
 	@Column(name = "nombre")
 	private String nombre;
 
 	@Column(name = "apellido")
 	private String apellido;
 
-	@Column(name =  "email")
+	@Column(name = "email")
 	private String email;
 
 	@Column(name = "create_at")
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date createAt;
-	
+
 	@PrePersist
 	public void prePersist() {
 		this.createAt = new Date();
@@ -77,7 +79,17 @@ public class Alumno {
 	public void setCreateAt(Date createAt) {
 		this.createAt = createAt;
 	}
-	
-	
+
+	@Override
+	public boolean equals(Object obj) {
+		if(this == obj) {
+			return true;
+		}
+		if(!(obj instanceof Alumno)) {
+			return false;
+		}
+		Alumno objAlumno = (Alumno) obj;
+		return this.id != null && this.id.equals(objAlumno.getId());
+	}
 
 }
