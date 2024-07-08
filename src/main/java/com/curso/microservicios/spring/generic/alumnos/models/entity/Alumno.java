@@ -12,8 +12,6 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
-import javassist.expr.Instanceof;
-
 @Entity
 @Table(name = "alumnos")
 public class Alumno {
