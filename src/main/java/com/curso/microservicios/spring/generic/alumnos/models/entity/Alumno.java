@@ -45,7 +45,7 @@ public class Alumno {
 	@Column(name = "foto")
 	@Lob
 	@JsonIgnore
-	private Byte[] foto;
+	private byte[] foto;
 
 	@PrePersist
 	public void prePersist() {
@@ -96,11 +96,11 @@ public class Alumno {
 		this.createAt = createAt;
 	}
 
-	public Byte[] getFoto() {
+	public byte[] getFoto() {
 		return foto;
 	}
 
-	public void setFoto(Byte[] foto) {
+	public void setFoto(byte[] foto) {
 		this.foto = foto;
 	}
 
